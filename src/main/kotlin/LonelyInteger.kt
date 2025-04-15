@@ -1,15 +1,7 @@
 fun lonelyinteger(a: Array<Int>): Int {
-    // Write your code here
-    for(i in a.indices){
-        var counter = 0
-        for(j in a.indices){
-            if(a[i]==a[j]){
-                counter++
-            }
-        }
-        if(counter == 1) {
-            return a[i]
-        }
+    val countMap = mutableMapOf<Int, Int>()
+    for (number in a) {
+        countMap[number] = (countMap[number] ?: 0) + 1
     }
-    return 0
+    return countMap.entries.first { it.value == 1 }.key
 }
